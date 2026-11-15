@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radar — pre-token protocols ranked by implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <p class="kicker">Token launch radar &middot; snapshot <span id="asof">—</span></p>
+    <h1>Which protocol launches next, and what it may be worth</h1>
+    <p class="lede">Every pre-token protocol in the frozen DefiLlama snapshot, ranked by an implied value derived from its own figures. No protocol name is hard-coded anywhere in the model; the formula and its inputs are printed below the board.</p>
+  </div>
+</header>
+<main id="app" class="wrap">
+  <section id="stats" class="stats" aria-label="Coverage"></section>
+  <section class="controls" aria-label="Filter and sort the board">
+    <label class="ctl">Search
+      <input id="q" type="search" placeholder="Protocol name or slug" autocomplete="off">
+    </label>
+    <label class="ctl">Category
+      <select id="cat"></select>
+    </label>
+    <label class="ctl">Chain
+      <select id="chain"></select>
+    </label>
+    <label class="ctl">Sort by
+      <select id="sort">
+        <option value="implied">Implied value</option>
+        <option value="tvl">TVL</option>
+        <option value="growth">7-day change</option>
+        <option value="age">Age</option>
+        <option value="name">Name A–Z</option>
+      </select>
+    </label>
+    <button id="clear" class="btn" type="button">Clear filters</button>
+  </section>
+  <p id="count" class="count" aria-live="polite"></p>
+  <section id="detail" class="detail" hidden></section>
+  <div class="tablewrap">
+    <table id="board">
+      <thead>
+        <tr>
+          <th data-k="implied" scope="col">#</th>
+          <th data-k="name" scope="col">Protocol</th>
+          <th scope="col">Category</th>
+          <th scope="col">Chains</th>
+          <th data-k="tvl" scope="col">TVL</th>
+          <th data-k="growth" scope="col">7d</th>
+          <th data-k="age" scope="col">Age</th>
+          <th data-k="implied" scope="col">Implied value</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+  <p id="empty" class="empty" hidden>No protocol matches that filter. Loosen the search or clear the filters.</p>
+  <section id="model" class="model" aria-label="How the value is computed"></section>
+  <section id="live" class="live" aria-label="Tokens that already trade"></section>
+  <footer class="foot">
+    <p>Implied values are this entry&rsquo;s own model, computed from the snapshot&rsquo;s figures — they are not a prediction that a token will launch, or what it will trade at. A protocol that records no token may still have one its DefiLlama record does not carry. Data frozen <span id="asof2">—</span>; farm steps name costs and times as estimates, and claiming anything costs nothing but gas — never pay to claim.</p>
+  </footer>
+</main>
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
